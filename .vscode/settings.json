@@ -1,0 +1,22 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "gradle.debug": true,
+  "cSpell.words": [
+    "assertj",
+    "tinello"
+    ],
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-23",
+      "path": "/home/g/DEV/Tools/jdk-23.0.2+7"
+    }
+  ],
+  "java.jdt.ls.java.home": "/home/g/DEV/Tools/jdk-23.0.2+7",
+  "maven.terminal.customEnv": [
+            {
+                "environmentVariable": "JAVA_HOME",
+                "value": "/home/g/DEV/Tools/jdk-23.0.2+7"
+            }
+        ],
+  "java.debug.settings.onBuildFailureProceed": true
+}
