@@ -8,24 +8,24 @@ import javax.tools.ForwardingJavaFileManager;
 import javax.tools.JavaFileManager;
 import javax.tools.JavaFileObject;
 
-// FileManager que guarda los .class en memoria
+// FileManager that stores the .class files in memory
 class MemoryFileManager extends ForwardingJavaFileManager<JavaFileManager> {
     private final Map<String, MemoryJavaFileObject> classFiles = new HashMap<>();
 
-    MemoryFileManager(JavaFileManager fileManager) {
+    MemoryFileManager(final JavaFileManager fileManager) {
         super(fileManager);
     }
 
     @Override
-    public JavaFileObject getJavaFileForOutput(Location location, String className,
-                                               JavaFileObject.Kind kind, FileObject sibling) {
-        MemoryJavaFileObject file = new MemoryJavaFileObject(className, kind);
+    public JavaFileObject getJavaFileForOutput(final Location location, final String className,
+                                               final JavaFileObject.Kind kind, final FileObject sibling) {
+        final var file = new MemoryJavaFileObject(className, kind);
         classFiles.put(className, file);
         return file;
     }
 
     public Map<String, byte[]> getClassBytes() {
-        Map<String, byte[]> result = new HashMap<>();
+        final var result = new HashMap<String, byte[]>();
         for (Map.Entry<String, MemoryJavaFileObject> e : classFiles.entrySet()) {
             result.put(e.getKey(), e.getValue().getBytes());
         }

@@ -6,7 +6,7 @@ import java.net.URI;
 
 import javax.tools.SimpleJavaFileObject;
 
-// Representación del .class compilado en memoria
+// Representation of the .class compiled in memory
 class MemoryJavaFileObject extends SimpleJavaFileObject {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 

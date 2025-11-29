@@ -2,7 +2,7 @@ package ar.com.tinello.jsr199;
 
 import java.util.Map;
 
-// ClassLoader que carga bytecode desde memoria
+// ClassLoader that loads bytecode from memory
 class MemoryClassLoader extends ClassLoader {
     private final Map<String, byte[]> classBytes;
 
@@ -11,8 +11,8 @@ class MemoryClassLoader extends ClassLoader {
     }
 
     @Override
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
-        byte[] bytes = classBytes.get(name);
+    protected Class<?> findClass(final String name) throws ClassNotFoundException {
+        final var bytes = classBytes.get(name);
         if (bytes == null)
             throw new ClassNotFoundException(name);
         return defineClass(name, bytes, 0, bytes.length);
