@@ -10,11 +10,13 @@ This project is focused on testing the generation and compilation of Java classe
 
 
 Generate package
-```
-mvn clean package
+
+```bash
+./mvnw clean package
 ```
 
 Run
-```
+
+```bash
 java -jar ./target/jsr-199-1.0.0.jar
 ```

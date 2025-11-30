@@ -3,19 +3,20 @@
   "gradle.debug": true,
   "cSpell.words": [
     "assertj",
+    "mvnw",
     "tinello"
-    ],
+  ],
   "java.configuration.runtimes": [
     {
-      "name": "JavaSE-23",
-      "path": "/home/g/DEV/Tools/jdk-23.0.2+7"
+      "name": "JavaSE-25",
+      "path": "/home/g/DEV/Tools/jdk-25.0.1+8"
     }
   ],
-  "java.jdt.ls.java.home": "/home/g/DEV/Tools/jdk-23.0.2+7",
+  "java.jdt.ls.java.home": "/home/g/DEV/Tools/jdk-25.0.1+8",
   "maven.terminal.customEnv": [
             {
                 "environmentVariable": "JAVA_HOME",
-                "value": "/home/g/DEV/Tools/jdk-23.0.2+7"
+                "value": "/home/g/DEV/Tools/jdk-25.0.1+8"
             }
         ],
   "java.debug.settings.onBuildFailureProceed": true
