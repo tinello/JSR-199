@@ -2,7 +2,6 @@ package ar.com.tinello.jsr199;
 
 import java.util.HashMap;
 
-import ar.com.tinello.jsr199.compiler.MemoryCompile;
 import ar.com.tinello.jsr199.examples.Execute;
 import ar.com.tinello.jsr199.examples.HelloExecute;
 
