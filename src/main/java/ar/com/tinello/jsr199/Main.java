@@ -1,60 +1,29 @@
 package ar.com.tinello.jsr199;
 
-import java.util.Arrays;
+import java.util.HashMap;
 
-import javax.tools.ToolProvider;
+import ar.com.tinello.jsr199.compiler.MemoryCompile;
+import ar.com.tinello.jsr199.examples.Execute;
+import ar.com.tinello.jsr199.examples.HelloExecute;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("JSR-199 Example");
 
-        final var className = "Hello";
-        final var code = """
-            public class Hello {
-                public String greet(String name) {
-                    return "Hello " + name + " from runtime!!!";
-                }
+        final var compilers = new HashMap<String, Execute>();
+        compilers.put("Hello", new HelloExecute());
+
+        if (args.length != 1 || !compilers.containsKey(args[0])) {
+            System.out.println("Available examples:");
+            for (var key : compilers.keySet()) {
+                System.out.println(" - " + key);
             }
-            """;
-
-        try {
-            final var startTime = System.currentTimeMillis();
-            System.out.println("Start compilation...");
-            // Compile and obtain a ClassLoader that contains the compiled class
-            final var loader = compile(className, code);
-            System.out.println("Compilation successful: " + (System.currentTimeMillis() - startTime) + " ms.");
-
-            
-            // Load the class from the ClassLoader
-            final var clsHello = loader.loadClass(className);
-
-            // Create an instance and invoke the greet method
-            final var objHello = clsHello.getDeclaredConstructor().newInstance();
-            final var greet = clsHello.getMethod("greet", String.class).invoke(objHello, "World");
-            System.out.println(greet);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            return;
         }
+
+        compilers.get(args[0]).run();
 
     }
 
 
-    public static MemoryClassLoader compile(final String className, final String sourceCode) throws Exception {
-        final var compiler = ToolProvider.getSystemJavaCompiler();
 
-        final var file = new JavaSourceFromString(className, sourceCode);
-
-        final var fileManager =
-                new MemoryFileManager(compiler.getStandardFileManager(null, null, null));
-
-        final var task = compiler.getTask(
-                null, fileManager, null, null, null, Arrays.asList(file));
-
-        if (!task.call()) {
-            throw new RuntimeException("Compilation failed.");
-        }
-
-        return new MemoryClassLoader(fileManager.getClassBytes());
-    }
 }

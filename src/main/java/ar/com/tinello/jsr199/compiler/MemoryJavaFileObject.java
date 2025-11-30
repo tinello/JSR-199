@@ -1,4 +1,4 @@
-package ar.com.tinello.jsr199;
+package ar.com.tinello.jsr199.compiler;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -7,10 +7,10 @@ import java.net.URI;
 import javax.tools.SimpleJavaFileObject;
 
 // Representation of the .class compiled in memory
-class MemoryJavaFileObject extends SimpleJavaFileObject {
+public class MemoryJavaFileObject extends SimpleJavaFileObject {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-    MemoryJavaFileObject(String className, Kind kind) {
+    public MemoryJavaFileObject(String className, Kind kind) {
         super(URI.create("mem:///" + className.replace('.', '/') + kind.extension), kind);
     }
 

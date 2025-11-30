@@ -1,9 +1,9 @@
-package ar.com.tinello.jsr199;
+package ar.com.tinello.jsr199.compiler;
 
 import java.util.Map;
 
 // ClassLoader that loads bytecode from memory
-class MemoryClassLoader extends ClassLoader {
+public class MemoryClassLoader extends ClassLoader {
     private final Map<String, byte[]> classBytes;
 
     MemoryClassLoader(Map<String, byte[]> classBytes) {

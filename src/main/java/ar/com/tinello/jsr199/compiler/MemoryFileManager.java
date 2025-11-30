@@ -1,4 +1,4 @@
-package ar.com.tinello.jsr199;
+package ar.com.tinello.jsr199.compiler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,10 +9,10 @@ import javax.tools.JavaFileManager;
 import javax.tools.JavaFileObject;
 
 // FileManager that stores the .class files in memory
-class MemoryFileManager extends ForwardingJavaFileManager<JavaFileManager> {
+public class MemoryFileManager extends ForwardingJavaFileManager<JavaFileManager> {
     private final Map<String, MemoryJavaFileObject> classFiles = new HashMap<>();
 
-    MemoryFileManager(final JavaFileManager fileManager) {
+    public MemoryFileManager(final JavaFileManager fileManager) {
         super(fileManager);
     }
 
