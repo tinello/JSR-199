@@ -17,7 +17,7 @@
             "request": "launch",
             "mainClass": "ar.com.tinello.jsr199.Main",
             "projectName": "jsr-199",
-            "args": "Hello"
+            "args": "Thread"
         }
     ]
 }
