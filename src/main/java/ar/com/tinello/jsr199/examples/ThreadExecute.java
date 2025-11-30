@@ -1,5 +1,7 @@
 package ar.com.tinello.jsr199.examples;
 
+import java.util.ArrayList;
+
 import ar.com.tinello.jsr199.compiler.MemoryCompile;
 
 public class ThreadExecute implements Execute {
@@ -45,10 +47,17 @@ public class ThreadExecute implements Execute {
                 }
             };
 
+
+            final var threads = new ArrayList<Thread>();
             for (int i = 0; i < 10; i++) {
                 final var ov = Thread.ofVirtual();
                 ov.name("Virtual-Thread-" + i);
-                ov.start(task);
+                final var thread = ov.start(task);
+                threads.add(thread);
+            }
+
+            for (final var thread : threads) {
+                thread.join();
             }
 
         } catch (Exception e) {
