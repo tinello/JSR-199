@@ -3,7 +3,7 @@ This project is focused on testing the generation and compilation of Java classe
 
 ## Require
 
- - Java 23
+ - Java JDK 25 (To Build & Run)
  - Maven 3.9
  - VScode
     - Extension Pack for Java -> https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack
@@ -18,5 +18,7 @@ Generate package
 Run
 
 ```bash
-java -jar ./target/jsr-199-1.0.0.jar
+java -jar ./target/jsr-199-1.0.0.jar Hello
+
+java -jar ./target/jsr-199-1.0.0.jar Thread
 ```

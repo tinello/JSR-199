@@ -35,7 +35,7 @@ public class ThreadExecute implements Execute {
             Runnable task = () -> {
                 final var threadId = String.valueOf(Thread.currentThread().threadId());
                 final var threadName = Thread.currentThread().getName();
-                //System.out.println("Running in thread ID: " + threadId + ", Name: " + threadName);
+                System.out.println("Running in thread ID: " + threadId + ", Name: " + threadName);
                 final var thread = threadName+" ("+threadId+")";
                 try {
                     final var greet = clsHello.getMethod("greet", String.class, String.class).invoke(objHello, "World", thread);
@@ -46,7 +46,9 @@ public class ThreadExecute implements Execute {
             };
 
             for (int i = 0; i < 10; i++) {
-                Thread.ofVirtual().start(task).setName("Virtual-Thread-" + i);
+                final var ov = Thread.ofVirtual();
+                ov.name("Virtual-Thread-" + i);
+                ov.start(task);
             }
 
         } catch (Exception e) {
